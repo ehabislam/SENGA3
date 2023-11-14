@@ -69,7 +69,7 @@ let GameBoard = [
 ];
 
 let chars = ["a", "b", "c", "d", "e", "f", "g", "h"];
-
+//loads the board for the first time
 function loadGameBoard() {
   let squareColour;
   let counter = 0;
@@ -95,7 +95,7 @@ turnDisplay.innerHTML = `It is ${playerTurn}'s Turn`;
 turnDisplay.className = playerTurn.toLowerCase();
 
 const allSquares = document.querySelectorAll("#gameBoard .square");
-
+//adds all the listeners to the squares
 allSquares.forEach((square) => {
   square.addEventListener("dragstart", dragStart);
   square.addEventListener("dragover", dragOver);
@@ -104,6 +104,7 @@ allSquares.forEach((square) => {
   square.addEventListener("mouseout", hoverClear);
 });
 
+//clears the highlighted squares after mouse goes away
 function hoverClear() {
   allSquares.forEach((square) => {
     if (!square.classList.contains("inCheck")) {
@@ -111,7 +112,7 @@ function hoverClear() {
     }
   });
 }
-
+//highlights the squares on mouse over
 function hoverMoves(e) {
   pieceColor = e.target.classList[1];
 
@@ -137,6 +138,7 @@ function hoverMoves(e) {
 //return a boolean in the move is valid
 function validMove(e) {}
 
+//return piece type for easy parsing
 function getPieceType(pieceID) {
   if (pieceID.includes("king")) {
     pieceType = "king";
@@ -154,6 +156,7 @@ function getPieceType(pieceID) {
   return pieceType;
 }
 
+//return moves based on piece type
 function getMoves(e) {
   currentCell = e.target.offsetParent.id;
   currentColumn = currentCell[0];
@@ -175,6 +178,7 @@ function getMoves(e) {
   }
 }
 
+//returns all the moves the enemy can do
 function getAllEnemyMoves() {
   allEnemyPieces = {};
   pieceColor = "";
@@ -241,6 +245,7 @@ function squareEnemy(e, startDraggedElement) {
 
 function ifPieceTurn(piece) {}
 
+//changes the
 function changeTurns() {
   playerTurn = playerTurn == "White" ? "Black" : "White";
   turnDisplay.innerHTML = `It is ${playerTurn}'s Turn`;
@@ -311,8 +316,6 @@ function dragOver(e) {
 function getKingPosition(color) {}
 
 function inCheck() {
-  // kingCellWhite = document.getElementById("kingLight").parentElement;
-  // kingCellDark = document.getElementById("kingDark").parentElement;
   allEnemyMoves = getAllEnemyMoves();
   if (playerTurn === "White") {
     kingCellWhite = document.getElementById("kingLight").parentElement;
@@ -385,17 +388,8 @@ function calculateWin() {
 
 function restartGame() {
   if (restart) {
-    clearBoard();
-    loadGameBoard();
+    location.reload();
   }
-}
-
-function clearBoard() {
-  playerTurn = "White";
-  gameBoard.innerHTML = "";
-  killedDark = [];
-  killedLight = [];
-  document.querySelector(".killed").innerHTML = "";
 }
 
 window.addEventListener("load", function () {
