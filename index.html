@@ -1,0 +1,61 @@
+<!-- Course: SENG 513 -->
+<!-- Date: Nov 13, 2023 -->
+<!-- Assignment 1 -->
+<!-- Name: Ehab Islam -->
+<!-- UCID: 30105153 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Chess</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="popup">
+      <button id="close">&times;</button>
+      <h2>Chess</h2>
+      <p>
+        Author: Ehab Islam<br />
+        Title: Chess. <br />
+        Target Platform: Mobile and Desktop.<br />
+        Game Genre: Board Strategy.<br />
+        Games Objective: Modified Chess game, Player with highest score after
+        first check wins. <br />
+      </p>
+      <ul>
+        <li>Pawn are 1 point</li>
+        <li>Rooks, Kinghts and Bishops are 2 points</li>
+        <li>Queens is 5 points</li>
+      </ul>
+      <p>
+        Rules of the Game (Win condition modified):
+        <a href="https://www.chess.com/learn-how-to-play-chess"
+          >How to play Chess</a
+        ><br />
+        Game Mechanics: Drag and drop a piece to desired square, if the move is
+        valid the piece will be moved to the square.
+      </p>
+      <a id="closed" target="_blank">Let's Go</a>
+    </div>
+    <div id="Game">
+      <div id="turnHolder">
+        <p id="turn"></p>
+      </div>
+      <div id="class">
+        <div class="takenPieceHolder">
+          <p>Black's pieces</p>
+          <div id="killedDark"></div>
+        </div>
+        <div id="gameBoard"></div>
+        <div class="takenPieceHolder">
+          <p>White's pieces</p>
+          <div id="killedLight"></div>
+        </div>
+      </div>
+    </div>
+    <script src="pieces.js"></script>
+    <script src="moves.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
