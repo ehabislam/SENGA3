@@ -245,13 +245,14 @@ function squareEnemy(e, startDraggedElement) {
 
 function ifPieceTurn(piece) {}
 
-//changes the
+//changes the turns
 function changeTurns() {
   playerTurn = playerTurn == "White" ? "Black" : "White";
   turnDisplay.innerHTML = `It is ${playerTurn}'s Turn`;
   turnDisplay.className = playerTurn.toLowerCase();
 }
 
+//checks the turn
 function ifTurn(draggedPiece) {
   draggedPiece.classList[1];
   return (
@@ -265,11 +266,13 @@ let startPositionID;
 let draggedElement;
 let startDraggedElement;
 
+//starts drag event for pieces
 function dragStart(e) {
   startPositionID = e.target.parentNode.getAttribute("id");
   draggedElement = e.target;
   startDraggedElement = e;
 }
+//handles drop event for pieces
 function dragDrop(e) {
   e.stopPropagation();
   parentSquare = e.target.parentElement;
@@ -309,12 +312,14 @@ function dragDrop(e) {
   calculateWin();
   restartGame();
 }
+
 function dragOver(e) {
   e.preventDefault();
 }
 
 function getKingPosition(color) {}
 
+//checks if king is in check
 function inCheck() {
   allEnemyMoves = getAllEnemyMoves();
   if (playerTurn === "White") {
@@ -339,7 +344,7 @@ function inCheck() {
     return;
   }
 }
-
+//calculates wins
 function calculateWin() {
   if (check) {
     pawnScore = 1;
@@ -386,12 +391,14 @@ function calculateWin() {
   }
 }
 
+//restart the game
 function restartGame() {
   if (restart) {
     location.reload();
   }
 }
 
+//popup handler
 window.addEventListener("load", function () {
   setTimeout(function open(event) {
     document.querySelector(".popup").style.display = "block";
